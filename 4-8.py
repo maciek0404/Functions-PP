@@ -1,8 +1,34 @@
 def time_string(hours, minutes, time_format):
-    result = ''
-    if hours >= 0 and hours <= 23:
-        godzina = hours 
-    if minutes >= 0 and minutes <= 59:
-        minuta = minutes
-    if time_format == 12:
     
+    if time_format == '24':
+        return f"{hours:02d}:{minutes:02d}"
+    
+    
+    elif time_format == '12':
+        suffix = "am" if hours < 12 else "pm"
+
+        
+        if hours == 0:
+            h = 12
+        elif hours > 12:
+            h = hours - 12
+        else:
+            h = hours
+
+        return f"{h}:{minutes:02d}{suffix}"
+
+    else:
+        return "Invalid format"
+
+
+
+print(time_string(15, 38, '24'))  
+print(time_string(8, 3, '24'))    
+print(time_string(0, 5, '24'))    
+
+print(time_string(11, 15, '12'))  
+print(time_string(0, 7, '12'))    
+print(time_string(7, 30, '12'))   
+print(time_string(12, 46, '12'))  
+print(time_string(13, 10, '12'))  
+print(time_string(19, 2, '12'))   
